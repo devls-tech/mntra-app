@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mntra — Privacy Policy</title>
+<title>Mntra</title>
 <style>
   :root { color-scheme: light dark; }
   body {
@@ -17,50 +17,27 @@
     body { background: #111; color: #eaeaea; }
     a { color: #b9a7ff; }
   }
-  h1 { font-size: 1.8rem; margin-bottom: 0.2rem; }
-  .updated { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
+  h1 { font-size: 2rem; margin-bottom: 0.4rem; }
+  .tagline { color: #888; font-size: 1.05rem; margin-bottom: 2rem; }
   h2 { margin-top: 2rem; font-size: 1.15rem; }
-  code { background: rgba(127,127,127,0.15); padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+  ul { padding-left: 1.4rem; }
+  li { margin: 0.5rem 0; }
+  a { color: #4f3cff; }
 </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<div class="updated">Last updated: 2026-04-24</div>
+<h1>Mntra</h1>
+<div class="tagline">A flashcard learning app for Android.</div>
 
-<p>Mntra is a flashcard learning app for Android. This policy explains what data the app touches, why, and who it's shared with.</p>
+<p>Mntra stores your decks on your device, with optional AI helpers you bring your own key for. There is no sign-in and no cloud sync.</p>
 
-<h2>Short version</h2>
-<p>Mntra stores everything on your device. It does not have a backend, does not log you in, and does not send your flashcards, audio, or images anywhere. We (devls) do not have a server that holds your data.</p>
-
-<h2>Data Mntra accesses on your device</h2>
-<p><strong>Flashcard content.</strong> The decks, cards, and templates you create are stored in a local database on your phone. Nothing is transmitted off device.</p>
-<p><strong>Audio recording.</strong> If you attach an audio recording to a card, Mntra uses the microphone (the <code>RECORD_AUDIO</code> permission) to capture audio from your device and writes the file to the app's private storage directory. Recordings are only created when you tap the record button inside a card editor. Mntra does not open the microphone in the background, does not stream audio anywhere, and does not transcribe it.</p>
-<p><strong>Images.</strong> Images attached to cards are copied into the app's private storage. They are not uploaded.</p>
-<p><strong>Text-to-speech.</strong> When you tap the speaker icon on a card, Mntra hands the text to your Android system's text-to-speech engine. Some system TTS engines may fetch voice data or telemetry; that's out of Mntra's control — check your system TTS settings.</p>
-<p><strong>Notifications.</strong> Mntra can send you a daily local notification when cards are due. The notification is generated on your device from your own data; nothing is sent over the network.</p>
-<p><strong>Archive files.</strong> When you export a deck, Mntra writes a <code>.mntra</code> archive into your chosen location (e.g. your Downloads folder) or to the share sheet. Importing a <code>.mntra</code> archive reads it back in. Files are only read or written when you explicitly tap Export or Import.</p>
-
-<h2>Data Mntra does not collect</h2>
+<h2>Legal</h2>
 <ul>
-<li>Account information — Mntra has no sign-in.</li>
-<li>Analytics, crash reports, or usage telemetry.</li>
-<li>Advertising identifiers or personal identifiers.</li>
-<li>Contacts, location, call logs, SMS, or calendar.</li>
+  <li><a href="privacy-policy.html">Privacy Policy</a></li>
+  <li><a href="terms-of-service.html">Terms of Service</a></li>
 </ul>
 
-<h2>Third parties</h2>
-<p>Mntra ships with no third-party SDKs that transmit data. The app uses Google's open-source Android libraries (AndroidX, Jetpack Compose, Room, WorkManager) locally on device.</p>
-
-<h2>Children</h2>
-<p>Mntra does not target children under 13 and does not knowingly collect data from any user. Because the app does not collect personal data in the first place, no special children's-data handling is needed.</p>
-
-<h2>Data retention and deletion</h2>
-<p>All Mntra data lives in the app's private storage. You can delete everything at any time by uninstalling the app; Android removes the app's private directory on uninstall. There is no cloud copy to delete.</p>
-
-<h2>Changes</h2>
-<p>If this policy changes, the updated version will be published at the same URL and the "Last updated" date at the top will change.</p>
-
 <h2>Contact</h2>
-<p>Questions about this policy: <a href="mailto:support@devls.tech">support@devls.tech</a></p>
+<p><a href="mailto:support@devls.tech">support@devls.tech</a></p>
 </body>
 </html>

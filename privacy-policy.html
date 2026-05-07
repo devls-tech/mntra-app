@@ -21,46 +21,86 @@
   .updated { color: #888; font-size: 0.9rem; margin-bottom: 2rem; }
   h2 { margin-top: 2rem; font-size: 1.15rem; }
   code { background: rgba(127,127,127,0.15); padding: 2px 5px; border-radius: 4px; font-size: 0.9em; }
+  ul { padding-left: 1.4rem; }
+  li { margin: 0.3rem 0; }
 </style>
 </head>
 <body>
 <h1>Privacy Policy</h1>
-<div class="updated">Last updated: 2026-04-24</div>
+<div class="updated">Last updated: 2026-05-07</div>
 
-<p>Mntra is a flashcard learning app for Android. This policy explains what data the app touches, why, and who it's shared with.</p>
+<p>Mntra is a flashcard learning app for Android, published by devls (the &ldquo;developer&rdquo;, &ldquo;we&rdquo;). This policy explains what data the app touches, why, and who it's shared with.</p>
 
 <h2>Short version</h2>
-<p>Mntra stores everything on your device. It does not have a backend, does not log you in, and does not send your flashcards, audio, or images anywhere. We (devls) do not have a server that holds your data.</p>
+<p>Your flashcards live on your device. The app does not have a backend, does not log you in, and does not send your decks anywhere. Two narrowly scoped exceptions exist and are documented below: a) <strong>crash reports</strong> via Sentry (no card content is included), and b) <strong>optional AI features</strong> that send the text and images you choose directly to an AI provider you sign in to with your own API key.</p>
 
 <h2>Data Mntra accesses on your device</h2>
-<p><strong>Flashcard content.</strong> The decks, cards, and templates you create are stored in a local database on your phone. Nothing is transmitted off device.</p>
+
+<p><strong>Flashcard content.</strong> The decks, cards, and templates you create are stored in a local database on your phone. Nothing is transmitted off device unless you explicitly use one of the AI features described below.</p>
+
 <p><strong>Audio recording.</strong> If you attach an audio recording to a card, Mntra uses the microphone (the <code>RECORD_AUDIO</code> permission) to capture audio from your device and writes the file to the app's private storage directory. Recordings are only created when you tap the record button inside a card editor. Mntra does not open the microphone in the background, does not stream audio anywhere, and does not transcribe it.</p>
+
 <p><strong>Images.</strong> Images attached to cards are copied into the app's private storage. They are not uploaded.</p>
-<p><strong>Text-to-speech.</strong> When you tap the speaker icon on a card, Mntra hands the text to your Android system's text-to-speech engine. Some system TTS engines may fetch voice data or telemetry; that's out of Mntra's control — check your system TTS settings.</p>
+
+<p><strong>Text-to-speech.</strong> When you tap the speaker icon on a card, Mntra hands the text to your Android system's text-to-speech engine. Some system TTS engines may fetch voice data or telemetry; that's out of Mntra's control &mdash; check your system TTS settings.</p>
+
 <p><strong>Notifications.</strong> Mntra can send you a daily local notification when cards are due. The notification is generated on your device from your own data; nothing is sent over the network.</p>
+
 <p><strong>Archive files.</strong> When you export a deck, Mntra writes a <code>.mntra</code> archive into your chosen location (e.g. your Downloads folder) or to the share sheet. Importing a <code>.mntra</code> archive reads it back in. Files are only read or written when you explicitly tap Export or Import.</p>
+
+<h2>Crash reporting (Sentry)</h2>
+
+<p>Mntra uses <a href="https://sentry.io">Sentry</a> to capture app crashes and a small number of non-fatal failure events (e.g. an AI provider returning an unparseable response). Crash reports include device model, Android version, app version, and the stack trace of the crashing thread. They do <strong>not</strong> include the contents of your cards, decks, audio, images, your API key, or any text you typed.</p>
+
+<p>A scrubber strips known PII fields (URLs, query parameters, headers) before any event leaves your device. Sentry data is processed by Sentry, Inc. (or its EU-region instance, depending on configuration) under their <a href="https://sentry.io/privacy/">privacy terms</a>.</p>
+
+<h2>Optional AI features (BYOK)</h2>
+
+<p>Mntra has optional AI-assisted features that you can unlock by entering your own API key for one of the supported providers (Google Gemini, OpenAI, Anthropic, Mistral). When you enable these features, the app contacts the provider directly from your device.</p>
+
+<p>The following data is sent to the provider <em>only when you actively trigger the feature</em>:</p>
+<ul>
+  <li><strong>Card autofill</strong> &mdash; the card-side text you typed plus the deck name and side language tags.</li>
+  <li><strong>Create deck with AI</strong> &mdash; the freeform deck description you typed plus a card-count hint.</li>
+  <li><strong>Add card from shared image</strong> &mdash; the bytes of the image you shared into Mntra (downsampled JPEG, max 1024 px long edge), plus the resulting extracted text when filling the card.</li>
+</ul>
+
+<p>What is sent is exactly what the provider needs to compute a response. Nothing else from your device is sent. Each request is HTTPS-direct between your phone and the provider; we do not run a backend that intercepts or stores it.</p>
+
+<p>The data you send is governed by <strong>the provider's</strong> privacy and data-use policies, which apply to your account with them, not to the developer of Mntra:</p>
+<ul>
+  <li>Google Gemini &mdash; <a href="https://ai.google.dev/terms">terms</a></li>
+  <li>OpenAI &mdash; <a href="https://openai.com/policies/privacy-policy/">privacy policy</a></li>
+  <li>Anthropic &mdash; <a href="https://www.anthropic.com/legal/privacy">privacy policy</a></li>
+  <li>Mistral &mdash; <a href="https://mistral.ai/terms/">terms</a></li>
+</ul>
+
+<p>Your API key is stored locally in encrypted shared preferences (AES-256 GCM) on your device and is never sent anywhere except to the provider you configured it for.</p>
 
 <h2>Data Mntra does not collect</h2>
 <ul>
-<li>Account information — Mntra has no sign-in.</li>
-<li>Analytics, crash reports, or usage telemetry.</li>
-<li>Advertising identifiers or personal identifiers.</li>
-<li>Contacts, location, call logs, SMS, or calendar.</li>
+  <li>Account information &mdash; Mntra has no sign-in.</li>
+  <li>Advertising identifiers or personal identifiers.</li>
+  <li>Contacts, location, call logs, SMS, or calendar.</li>
+  <li>Usage analytics or telemetry beyond the crash reporting described above.</li>
+  <li>Card content, audio, images, or your API key &mdash; none of these leave the device except in the documented AI flows you actively trigger.</li>
 </ul>
 
 <h2>Third parties</h2>
-<p>Mntra ships with no third-party SDKs that transmit data. The app uses Google's open-source Android libraries (AndroidX, Jetpack Compose, Room, WorkManager) locally on device.</p>
+<p>Mntra integrates with Sentry (for crash reporting) and with the AI provider you optionally configure. Both are described above. The app uses Google's open-source Android libraries (AndroidX, Jetpack Compose, Room, WorkManager) locally on device; these do not transmit data.</p>
 
 <h2>Children</h2>
-<p>Mntra does not target children under 13 and does not knowingly collect data from any user. Because the app does not collect personal data in the first place, no special children's-data handling is needed.</p>
+<p>Mntra does not target children under 13 and does not knowingly collect data from any user.</p>
 
 <h2>Data retention and deletion</h2>
-<p>All Mntra data lives in the app's private storage. You can delete everything at any time by uninstalling the app; Android removes the app's private directory on uninstall. There is no cloud copy to delete.</p>
+<p>All Mntra data lives in the app's private storage on your device. You can delete everything at any time by uninstalling the app; Android removes the app's private directory on uninstall. There is no cloud copy on our side to delete. Crash reports retained by Sentry expire per Sentry's retention defaults; reach out via the contact below to request deletion.</p>
 
 <h2>Changes</h2>
-<p>If this policy changes, the updated version will be published at the same URL and the "Last updated" date at the top will change.</p>
+<p>If this policy changes, the updated version will be published at this URL and the &ldquo;Last updated&rdquo; date at the top will change.</p>
 
 <h2>Contact</h2>
 <p>Questions about this policy: <a href="mailto:support@devls.tech">support@devls.tech</a></p>
+
+<p style="margin-top: 3rem; font-size: 0.85rem; color: #888;">See also: <a href="terms-of-service.html">Terms of Service</a></p>
 </body>
 </html>
